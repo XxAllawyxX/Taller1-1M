@@ -1,60 +1,107 @@
 import java.util.Scanner;
 
-public class Calculadora {
-    public static void main(String[] args) {
+public class Calculadora
+{
+    public static void main(String[] args)
+    {
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
+        while (true)
+        {
             System.out.println("Bienvenido a este programa =D");
-            System.out.println("En este programa podra realizar operaciones sencillas.");
-            System.out.println("Seleccione una operaciSn:");
-            System.out.println("1. Suma");
-            System.out.println("2. Resta");
-            System.out.println("3. Multiplicación");
-            System.out.println("4. División");
-            System.out.println("0. Salir");
+            System.out.println("En este programa podras realizar operaciones basicas y calcular el IVA.");
+            System.out.println("Selecciona una opcion -->");
+            System.out.println("1- Suma");
+            System.out.println("2- Resta");
+            System.out.println("3- Multiplicacion");
+            System.out.println("4 - Division");
+            System.out.println("5- Seno");
+            System.out.println("6- Coseno");
+            System.out.println("7- Tangente");
+            System.out.println("0- Salir del programa");
 
-            int opcion = scanner.nextInt();
+            int Opcion = scanner.nextInt();
 
-            if (opcion == 0) {
-                System.out.println("Saliendo de la calculadora.");
+            if (Opcion == 0)
+            {
+                System.out.println("Saliendo de la calculadora, gracias por usarla.");
                 break;
             }
 
-            System.out.print("Ingrese el primer número: ");
-            double num1 = scanner.nextDouble();
+            if (Opcion >= 1 && Opcion <= 4)
+            {
+            System.out.println("Ingresa el primer numero: ");
+            double Numero1 = scanner.nextDouble();
 
-            System.out.print("Ingrese el segundo número: ");
-            double num2 = scanner.nextDouble();
+            System.out.println("Ingresa el segundo numero: ");
+            double Numero2 = scanner.nextDouble();
+            
+            double Resultado = 0;
 
-            double resultado = 0;
-
-            switch (opcion) {
+            switch(Opcion)
+            {
                 case 1:
-                    resultado = num1 + num2;
-                    break;
+                Resultado = Numero1 + Numero2;
+                break;
+
                 case 2:
-                    resultado = num1 - num2;
-                    break;
+                Resultado = Numero1 - Numero2;
+
                 case 3:
-                    resultado = num1 * num2;
-                    break;
+                Resultado = Numero1 * Numero2;
+
                 case 4:
-                    if (num2 != 0) {
-                        resultado = num1 / num2;
-                    } else {
-                        System.out.println("No se puede dividir por cero.");
-                        continue;
-                    }
-                    break;
-                default:
-                    System.out.println("Opción no válida.");
+                if(Numero2 == 0)
+                {
+                    System.out.println("No se puede dividir entre cero.");
                     continue;
+                }
+                else
+                {
+                    Resultado = Numero1/Numero2;
+                }
+                break;
+
+           
+          
+            
+
+            }
+        System.out.println("El resultado es --> " + Resultado);
+            }
+            else if (Opcion >=5 && Opcion <=7)
+            {
+                System.out.println("Ingresa el angulo en grados (°) :" );
+                double Angulo = scanner.nextDouble();
+                double AnguloRadianes = Math.toRadians(Angulo);
+                double ResultadoTrigonometria = 0;
+
+                switch(Opcion)
+                {
+                    case 5:
+                    ResultadoTrigonometria = Math.sin(AnguloRadianes);
+                    ResultadoTrigonometria = Math.round(ResultadoTrigonometria*10000)/10000.0;
+                    break;
+
+                    case 6:
+                    ResultadoTrigonometria = Math.cos(AnguloRadianes);
+                    ResultadoTrigonometria = Math.round(ResultadoTrigonometria*10000)/10000.0;
+                    break;
+
+                    case 7:
+                    ResultadoTrigonometria = Math.tan(AnguloRadianes);
+                    ResultadoTrigonometria = Math.round(ResultadoTrigonometria*10000)/10000.0;
+                    break;
+                }
+                System.out.println("El resultado es --> " + ResultadoTrigonometria);
+            }
+            else 
+            {
+                System.out.println("La opcion que digitaste no es valida, intenta otra vez.");
             }
 
-            System.out.println("El resultado es: " + resultado);
         }
+        scanner.close();    
 
-        scanner.close();
     }
 }

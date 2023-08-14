@@ -18,6 +18,7 @@ public class Calculadora
             System.out.println("5- Seno");
             System.out.println("6- Coseno");
             System.out.println("7- Tangente");
+            System.out.println("8- Raiz Enesima");
             System.out.println("0- Salir del programa");
 
             int Opcion = scanner.nextInt();
@@ -95,6 +96,21 @@ public class Calculadora
                 }
                 System.out.println("El resultado es --> " + ResultadoTrigonometria);
             }
+
+            if (Opcion ==8)
+            {
+                System.out.println("Opcion escogida --> Raiz Enesima.");
+                System.out.println("Ingresa el numero: ");
+                double Numero = scanner.nextDouble();
+
+                System.out.println("Ingresa el indice de la raiz enesima: ");
+                int Indice = scanner.nextInt();
+
+                double ResultadoRaiz = Math.pow(Numero,1.0/Indice);
+
+                System.out.println("El resultado de la raiz enesima es igual a --> " + ResultadoRaiz);
+            }
+
             else 
             {
                 System.out.println("La opcion que digitaste no es valida, intenta otra vez.");

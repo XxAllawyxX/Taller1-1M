@@ -19,6 +19,7 @@ public class Calculadora
             System.out.println("6- Coseno");
             System.out.println("7- Tangente");
             System.out.println("8- Raiz Enesima");
+            System.out.println("9- Potencia Enesima");
             System.out.println("0- Salir del programa");
 
             int Opcion = scanner.nextInt();
@@ -97,7 +98,7 @@ public class Calculadora
                 System.out.println("El resultado es --> " + ResultadoTrigonometria);
             }
 
-            if (Opcion ==8)
+           else if (Opcion ==8)
             {
                 System.out.println("Opcion escogida --> Raiz Enesima.");
                 System.out.println("Ingresa el numero: ");
@@ -106,9 +107,23 @@ public class Calculadora
                 System.out.println("Ingresa el indice de la raiz enesima: ");
                 int Indice = scanner.nextInt();
 
-                double ResultadoRaiz = Math.pow(Numero,1.0/Indice);
+                double ResultadoRaiz = Math.pow(Numero,1.0/Indice); // 1.0 para asegurarnos de que la división se realice con precisión en punto flotante y no se realice una división entera.
 
                 System.out.println("El resultado de la raiz enesima es igual a --> " + ResultadoRaiz);
+            }
+
+            else if (Opcion == 9)
+            {
+                System.out.println("Opcion Escogida --> Potencia Enesima.");
+                System.out.println("Ingresa el numero base:");
+                double Base = scanner.nextDouble();
+
+                System.out.println("Ingresa el exponente: ");
+                double Exponente = scanner.nextDouble();
+
+                double Resultado_PotenciaEnesima = Math.pow(Base,Exponente);
+                System.out.println("El resultado de la Potencia Ensesima es igual a --> " + Resultado_PotenciaEnesima);
+
             }
 
             else 

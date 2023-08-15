@@ -1,5 +1,6 @@
 import java.util.Scanner;
-
+//Taller 1-1M 
+// Allawi Esalas Hoyos Cod= 70041711
 public class Calculadora
 {
     public static void main(String[] args)
@@ -20,6 +21,7 @@ public class Calculadora
             System.out.println("7- Tangente");
             System.out.println("8- Raiz Enesima");
             System.out.println("9- Potencia Enesima");
+            System.out.println("10- Calcular Porcentaje IVA.");
             System.out.println("0- Salir del programa");
 
             int Opcion = scanner.nextInt();
@@ -63,14 +65,10 @@ public class Calculadora
                     Resultado = Numero1/Numero2;
                 }
                 break;
-
-           
-          
-            
-
             }
         System.out.println("El resultado es --> " + Resultado);
             }
+            
             else if (Opcion >=5 && Opcion <=7)
             {
                 System.out.println("Ingresa el angulo en grados (°) :" );
@@ -125,6 +123,23 @@ public class Calculadora
                 System.out.println("El resultado de la Potencia Ensesima es igual a --> " + Resultado_PotenciaEnesima);
 
             }
+
+            else if (Opcion == 10)
+            {
+                System.out.println("Opcion Escogida --> Calcular IVA.");
+                System.out.println("Ingresa el monto inicial: ");
+                double MontoInicial = scanner.nextDouble();
+
+                System.out.println("Ingresa el porcentaje de IVA: ");
+                double PorcentajeIVA = scanner.nextDouble();
+
+                double IVA = (MontoInicial * PorcentajeIVA) / 100;
+                double PrecioTotal = MontoInicial + IVA;
+
+                System.out.println("El precio final con el IVA incluido es igual a --> " + PrecioTotal);
+
+            }
+
 
             else 
             {

@@ -150,6 +150,47 @@ public class InterfazGrafica extends JFrame {
         }
     }
 
+    private class IVAButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            double montoInicial = Double.parseDouble(campoEntrada.getText());
+            double porcentajeIVA = Double.parseDouble(
+                    JOptionPane.showInputDialog("Ingrese el porcentaje de IVA:"));
+            double IVA = (montoInicial * porcentajeIVA) / 100;
+            double precioTotal = montoInicial + IVA;
+            campoEntrada.setText(String.valueOf(precioTotal));
+        }
+    }
+    private class IgualButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            Calcular();
+        }
+    }
+    private void Calcular() {
+        double segundoNumero = Double.parseDouble(campoEntrada.getText());
+        double resultado = 0.0;
+
+        switch (operadorTemporal) {
+            case "+":
+                resultado = resultadoTemporal + segundoNumero;
+                break;
+            case "-":
+                resultado = resultadoTemporal - segundoNumero;
+                break;
+            case "*":
+                resultado = resultadoTemporal * segundoNumero;
+                break;
+            case "/":
+                if (segundoNumero != 0) {
+                    resultado = resultadoTemporal / segundoNumero;
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error: División por 0");
+                }
+                break;
+        }
+
+        campoEntrada.setText(String.valueOf(resultado));
+        operadorTemporal = null;
+    }
    
 
     public static void main(String[] args) {

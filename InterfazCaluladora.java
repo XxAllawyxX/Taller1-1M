@@ -3,9 +3,9 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class InterfazCaluladora extends JFrame {
-    private JTextField campoEntrada;
+    private JTextField campoEntrada; //. Este componente permite a los usuarios ingresar texto, como números, palabras u otro tipo de datos de texto
     private JButton[] NumeroBotones;
-    private JButton Suma, Resta, Multiplicacion, Division, Igual, Limpiar;
+    private JButton Suma, Resta, Multiplicacion, Division, Igual, Limpiar, Seno , Coseno , Tangente;
     private double numero1, numero2, resultado;
     private char operador;
 
@@ -33,6 +33,10 @@ public class InterfazCaluladora extends JFrame {
         Division = crearBotonOperador("/");
         Igual = crearBotonOperador("=");
         Limpiar = crearBotonOperador("C");
+        Seno = crearBotonOperador("Sen");
+        Coseno = crearBotonOperador("Cos");
+        Tangente = crearBotonOperador("Tan");
+
 
         add(campoEntrada);
 
@@ -47,10 +51,16 @@ public class InterfazCaluladora extends JFrame {
         add(Resta);
         add(Multiplicacion);
         add(Division);
+        add(Seno);
+        add(Coseno);
+        add(Tangente);
 
         pack();
         setLocationRelativeTo(null);
     }
+    //Esta función se encarga de crear y configurar un botón de operador (como +, -, *, /) en la 
+    //calculadora GUI, y lo devuelve listo para ser agregado a la interfaz gráfica. El oyente 
+    //de acción que se agrega al botón se encargará de manejar las acciones cuando el usuario haga clic en ese botón específico.
 
     private JButton crearBotonOperador(String etiqueta) {
         JButton boton = new JButton(etiqueta);
@@ -59,6 +69,8 @@ public class InterfazCaluladora extends JFrame {
         return boton;
     }
 
+    //Esta clase actua como un oyente de eventos para los botones numericos y se encarga de 
+    //actualizar el campo de entrada de la calculadora cuando el usuario hace clic en ellos.
     private class NumberButtonListener  implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             JButton boton = (JButton) e.getSource();
@@ -66,8 +78,14 @@ public class InterfazCaluladora extends JFrame {
         }
     }
 
-    private class ButtonListenerOperator implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
+    private class ButtonListenerOperator implements ActionListener 
+    {
+        public void actionPerformed(ActionEvent e) 
+        {
+            //Estas líneas de código se utilizan para determinar qué operador se seleccionó haciendo 
+            //clic en el botón y asignarlo a la variable op como un carácter. Luego, ese operador 
+            //se utiliza más adelante en el código para realizar la operación correspondiente cuando 
+            //se hace clic en el botón de igual (=) para calcular el resultado.  
             JButton boton = (JButton) e.getSource();
             char op = boton.getText().charAt(0);
 
@@ -79,7 +97,7 @@ public class InterfazCaluladora extends JFrame {
                         break;
                     case '-':
                         resultado = numero1 - numero2;
-                        break;
+                        break;   
                     case '*':
                         resultado = numero1 * numero2;
                         break;
@@ -103,4 +121,14 @@ public class InterfazCaluladora extends JFrame {
             }
         }
     }
+
+    //Se Crea una instancia de la calculadora ,configura su visibilidad y asegura que toda esta 
+    //operación se realice en el hilo de eventos de Swing para garantizar un funcionamiento adecuado de la interfaz grafica.
+    public static void main(String[] args) 
+    {
+        SwingUtilities.invokeLater(() -> {  //Ademas garantiza la consistencia y evita problemas de concurrencia.
+            InterfazCaluladora calc = new InterfazCaluladora();
+            calc.setVisible(true);
+        });
+}
 }
